@@ -1,0 +1,9 @@
+service sensorcali_hal /vendor/bin/hw/vendor.yft.hardware.sensorcali@2.0-service-lazy
+    interface vendor.yft.hardware.sensorcali@2.0::ISensorCali default
+    interface vendor.yft.hardware.sensorcali@1.0::ISensorCali default
+    oneshot
+    disabled
+    class hal
+    user system
+    group system radio root bluetooth
+    

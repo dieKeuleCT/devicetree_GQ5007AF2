@@ -1,0 +1,7 @@
+ro.boot.vendor.overlay.theme=com.gotron.uota.overlay
+ro.fota.app=5
+ro.fota.battery=30
+ro.fota.oem=dazhi6835_14.0
+ro.fota.platform=MTK6835_14.0
+ro.fota.type=phone
+ro.system_ext.custom.version=GQ5007AF2_DZ_M158_Ulefone_EEA_Armor25TPro_20240918_V26
