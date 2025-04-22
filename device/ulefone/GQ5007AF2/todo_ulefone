@@ -1,0 +1,29 @@
+delete from proprietary files
+#    android.hardware.biometrics.fingerprint@2.1-service.xml
+#    android.hardware.boot@1.2.xml
+#    android.hardware.cas@1.2-service-lazy.xml
+#    android.hardware.drm-service.clearkey.xml
+#    android.hardware.ir-service.example.xml
+#    android.hardware.sensors-multihal.xml
+#    android.hardware.wifi.hostapd.xml
+#    android.hardware.wifi.supplicant.xml
+#    android.hardware.wifi@1.0-service.xml
+#    bluetooth_audio.xml
+#    gnss-default.xml
+#    manifest_cameraproviderhidl.xml
+#    manifest_face_default.xml
+#    manifest_hwcomposer.xml
+#    manifest_media_c2_V1_1_default.xml
+# health-service.example.xml
+# libnfc-nci.conf
+
+
+Mache einen sauberen Schnitt mit Android 14 Blobs/Konfiguration:
+
+1. Extrahiere alle benötigten proprietären Dateien (Blobs, Konfigs, Firmware etc.) aus einem Android 14 Stock ROM für dein Gerät (oder ein sehr ähnliches T618/MT6835-Gerät).
+2. Erstelle eine minimale proprietary-files.txt, die NUR diese wirklich benötigten A14-Blobs auflistet (keine Standard-Systembibliotheken oder -konfigurationen).
+3. Lösche die alten, generierten Android.bp und *-vendor.mk aus deinem vendor/ulefone/GQ5007AF2-Verzeichnis.
+4. Führe setup-makefiles.sh neu aus (oder erstelle/adaptiere die Build-Dateien manuell), basierend auf der neuen, sauberen proprietary-files.txt mit den A14-Blobs.
+5. BEARBEITE die neu generierte *-vendor.mk SOFORT MANUELL: Entferne alle PRODUCT_COPY_FILES-Einträge für .so-Dateien, Binaries und Standard-XML/RC-Dateien (Permissions, Sysconfig, Standard-VINTF etc.), die von Soong (Android.bp) oder dem Framework gehandhabt werden sollten.
+6. Deklariere VINTF-Manifeste korrekt über DEVICE_MANIFEST_FILE, DEVICE_VENDOR_MANIFEST_FILES, ODM_MANIFEST_FILES in deiner BoardConfig.mk oder device.mk.
+7. Führe rm -rf out aus und starte den Build. Behebe dann die (hoffentlich wenigeren) verbleibenden Fehler (oft DT_NEEDED).

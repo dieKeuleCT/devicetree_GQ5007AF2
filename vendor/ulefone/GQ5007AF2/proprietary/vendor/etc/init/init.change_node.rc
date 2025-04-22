@@ -1,0 +1,11 @@
+on boot
+# Created by lishuo.
+
+   chmod 0666 /sys/devices/platform/11e02000.i2c7/i2c-7/7-002b/mt5728group/reverse_charger
+   chmod 0666 /sys/devices/platform/pinctrl/mt_gpio
+
+# yft Eddie
+   chmod 0666 /sys/devices/platform/11d03000.i2c9/i2c-9/9-002b/mt5728group/reverse_charger
+   chmod 0666 /sys/devices/platform/soc/11eb3000.i2c/i2c-9/9-002b/mt5728group/reverse_charger
+   chmod 0666 /sys/devices/platform/soc/11eb3000.i2c/i2c-9/9-002b/mt5728group/rxdetect
+
